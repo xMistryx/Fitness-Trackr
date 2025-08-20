@@ -1,7 +1,7 @@
 import useMutation from "../api/useMutation";
 
 export default function Form() {
-    const {mutate: add} = useMutation("POST", `/activities/`, ["activities"]);
+    const {mutate: add, error} = useMutation("POST", `/activities/`, ["activities"]);
 
     const submit = (FormData) => {
         const obj = {
@@ -17,13 +17,14 @@ export default function Form() {
             <h3>Add a new activity</h3>
             <label>
             Name 
-            <input type="text" name="name" required />
+            <input type="text" name="name" />
             </label>
             <label>
             Description
-            <input type="text" name="description" required />
+            <input type="text" name="description" />
             </label>
             <button>Add activity</button>
+            {error ? <p>{error.message}</p> : null}
         </form>
     )
 }
