@@ -24,7 +24,7 @@ export default function useMutation(method, resource, tagsToInvalidate) {
       invalidateTags(tagsToInvalidate);
     } catch (e) {
       console.error(e);
-      setError(e.message);
+      setError(e);
     } finally {
       setLoading(false);
     }
